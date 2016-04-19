@@ -1,0 +1,45 @@
+﻿
+<html>
+<head>
+    <title>Results News</title>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" />
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- AngularJS-->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+    <script src="/JavaScripts/GetSearch.js"></script>
+    
+
+</head>
+<body>
+    <h2 class="bg-primary">Results News</h2>
+    @using (Html.BeginForm("Busquedas", "Busquedas"))
+    {
+        <label for="usr">Search:</label>
+        @Html.TextBox("search")
+        <input type="submit" class="btn btn-info" value="Search">
+    }
+    <div ng-app="myAppS" ng-controller="newsCtrlS">
+        <ul ng-repeat="result in results.response.results">
+            <li>{{result.webTitle}}</li>
+            <li><a href="{{results.webUrl}}">{{result.webUrl}}</a></li>
+            <li>{{result.webPublicationDate}}</li>
+            <li>{{result.sectionName}}</li>
+        </ul>
+    </div>
+    @*</form>*@
+
+</body>
+
+</html>
